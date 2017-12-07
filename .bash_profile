@@ -1,4 +1,5 @@
-# Import bashrc first
-if [ -f ~/.bashrc ]; then
-		. ~/.bashrc
-fi
+# .bash_profile
+. ~/.bashrc
+# User specific environment and startup programs
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH

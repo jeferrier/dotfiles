@@ -1,0 +1,61 @@
+# Add line numbers on load
+addhl global/ number_lines -relative
+
+# Add whitespace chars
+addhl global/ show_whitespaces -tab - -tabpad _ -spc ' '
+
+# set color scheme
+colorscheme germty
+
+# Set tab options
+set-option global indentwidth 0
+set-option global tabstop 4
+
+# Add git diff on idle
+hook global NormalIdle .* %{git show-diff}
+
+# Add lint on file open and idle
+hook global WinSetOption filetype=javascript %{
+	set buffer lintcmd 'eslint --format=/home/jferrier/node_modules/eslint-formatter-kakoune'
+	lint-enable
+	lint
+}
+hook global NormalIdle filetype=javascript %{
+	lint
+}
+
+# Add some convenience mappings from vim
+def vsp tmux-new-vertical
+def sp  tmux-new-horizontal
+map global normal <c-e> <c-d>
+map global normal <c-y> <c-u>
+map global normal <c-p> :find 
+
+# Add find functionality
+def find -params 1 -shell-candidates %{ find -type f } %{ edit %arg{1} }
+#def fzfind -params 1 \
+#	-shell-candidates %{
+#		find -type f
+#		#$(fzf -f "$1")
+#	} \
+#	%{ echo "$1" }
+
+#def fzf-file -params 0..1 %{
+#	fzf "edit $1"
+#}
+
+#def fzf -params 2 %{ %sh{
+#	tmp=$(mktemp /tmp/kak-fzf.XXXXXX)
+#	edit=$(mktemp /tmp/kak-edit.XXXXXX)
+#	echo "echo eval -client $kak_client \"$1\" | kak -p $kak_session" > $edit
+#	chmod 755 $edit
+#	(
+#		# todo: expect ctrl-[vw] to make execute in new windows instead
+#		bash -c "$2 | fzf --height 100% --reverse --color=16 -e -m --bind 'ctrl-c:execute($edit \"{}\")' > $tmp"
+#		(while read file; do
+#			$edit $file
+#		done) < $tmp
+#		rm $tmp
+#		rm $edit
+#	) > /dev/null 2>&1 < /dev/null &
+# } }

@@ -11,6 +11,7 @@ set laststatus=2 " This is for the light/powerline to show statuses
 set lcs=tab:-_,trail:~ " Set our desired whitespace characters
 set list
 set relativenumber
+set inccommand=split " Show find/replace results in a preview window before committing
 set dir=~/.vim/swaps " This sets the location that edited file swaps are saved (prevents local dir clutter)
 
 " Below is from Vundle
@@ -42,6 +43,8 @@ nnoremap <F1> :tabp<cr> " This makes it possible to change tabs with F1 and F2
 nnoremap <F2> :tabn<cr>
 nnoremap <C-e> 4<C-e>
 nnoremap <C-y> 4<C-y>
+nnoremap ( %
+nnoremap ) %
 
 nnoremap <C-n> :set relativenumber!<cr>
 nnoremap <C-p> :call fzf#run({'sink': 'tabedit'})<cr>
