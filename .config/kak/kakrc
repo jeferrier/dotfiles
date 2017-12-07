@@ -29,10 +29,10 @@ def vsp tmux-new-vertical
 def sp  tmux-new-horizontal
 map global normal <c-e> <c-d>
 map global normal <c-y> <c-u>
-map global normal <c-p> :find 
+map global normal <c-p> :find
 
 # Add find functionality
-def find -params 1 -shell-candidates %{ find -type f } %{ edit %arg{1} }
+def find -params 1 -shell-candidates %{ find . -type f } %{ edit %arg{1} }
 #def fzfind -params 1 \
 #	-shell-candidates %{
 #		find -type f
