@@ -1,0 +1,9 @@
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.gitignore.global
+[user]
+	name = James Ferrier
+	email = jeferrier@germty.com
+[push]
+	default = simple
