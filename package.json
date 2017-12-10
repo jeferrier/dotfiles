@@ -1,0 +1,12 @@
+{
+  "name": "jferrier",
+  "version": "1.0.0",
+  "description": "Packages I want to use",
+  "dependencies": {
+    "prettier": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint-formatter-kakoune": "^1.0.0"
+  },
+  "author": "James Ferrier"
+}
